@@ -11,15 +11,15 @@ import org.springframework.stereotype.Repository;
 @Log4j2
 public class ClienteInfraRepository implements ClienteRepository {
 
-    private final ClienteSpringDataJpaRepository clienteSpringDataJpaRepository;
+    private final ClienteSpringDataJpaRepository jpaRepository;
 
     @Override
     public Cliente salva(Cliente cliente){
 
         log.info("[inicia] ClienteInfraRepository - salva");
-
+        Cliente salvaCliente = jpaRepository.save(cliente);
         log.info("[finaliza] ClienteInfraRepository - salva");
-        return null;
+        return salvaCliente;
     }
 
 
