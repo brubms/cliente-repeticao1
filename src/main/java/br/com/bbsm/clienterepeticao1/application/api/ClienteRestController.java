@@ -5,6 +5,10 @@ import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
+import java.util.UUID;
+
 /*
 * A anotação @RestController pertence ao Spring Web (Spring MVC) e serve para indicar que uma classe é um controlador
 * responsável por responder a requisições HTTP em uma API RESTful.
@@ -26,4 +30,22 @@ public class ClienteRestController implements ClienteAPI{
         return cliente;
 
     }
-}
+
+    @Override
+    public List<ClienteListResponse> getListaTodosClientes() {
+        return List.of();
+    }
+
+    @Override
+    public ClienteDetalhadoResponse getBuscaClientePorId(UUID idCliente) {
+        log.info("[inicia] ClienteRestController - getBuscaClientePorId");
+        ClienteDetalhadoResponse detalhado = clienteService.buscaClientePorId(idCliente);
+        log.info("[finaliza] ClienteRestController - getBuscaClientePorId");
+        return detalhado;
+    }
+
+
+    }
+
+
+
