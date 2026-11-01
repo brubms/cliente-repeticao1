@@ -1,8 +1,11 @@
 package br.com.bbsm.clienterepeticao1.application.service;
 
+import br.com.bbsm.clienterepeticao1.application.api.ClienteDetalhadoResponse;
 import br.com.bbsm.clienterepeticao1.application.api.ClienteRequest;
 import br.com.bbsm.clienterepeticao1.application.api.ClienteResponse;
 import br.com.bbsm.clienterepeticao1.domain.Cliente;
+
+import java.util.UUID;
 
 public interface ClienteService {
     /*
@@ -14,4 +17,6 @@ public interface ClienteService {
     *
     * */
     ClienteResponse cadastraNovoCliente(ClienteRequest clienteRequest);
+
+    ClienteDetalhadoResponse buscaClientePorId(UUID idCliente);
 }
