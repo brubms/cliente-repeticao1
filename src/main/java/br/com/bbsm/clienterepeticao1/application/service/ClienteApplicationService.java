@@ -1,5 +1,6 @@
 package br.com.bbsm.clienterepeticao1.application.service;
 
+import br.com.bbsm.clienterepeticao1.application.api.ClienteDetalhadoResponse;
 import br.com.bbsm.clienterepeticao1.application.repository.ClienteRepository;
 import br.com.bbsm.clienterepeticao1.application.api.ClienteRequest;
 import br.com.bbsm.clienterepeticao1.application.api.ClienteResponse;
@@ -8,6 +9,8 @@ import br.com.bbsm.clienterepeticao1.domain.Cliente;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
+
+import java.util.UUID;
 
 /*
 *
@@ -46,5 +49,13 @@ public class ClienteApplicationService implements ClienteService{
         * o service entrega para o usuario o id criado. o cliente response é o retorno do método cadastranovocliente,
         * ou seja só recebe desse tipo, quando fazemos o processo de build passamos o dado crucial que ele precisa !
         * */
+    }
+
+    @Override
+    public ClienteDetalhadoResponse buscaClientePorId(UUID idCliente) {
+        log.info("[inicia] ClienteApplicationService - buscaClientePorId");
+        Cliente cliente = clienteRepository.buscaPorId(idCliente);
+        log.info("[finaliza] ClienteApplicationService - buscaClientePorId");
+        return new ClienteDetalhadoResponse(cliente);
     }
 }
