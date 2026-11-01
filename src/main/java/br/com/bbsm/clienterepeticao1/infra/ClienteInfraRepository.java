@@ -5,6 +5,9 @@ import br.com.bbsm.clienterepeticao1.domain.Cliente;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Repository;
+
+import java.util.UUID;
+
 /*
 * Diz para o Spring essa classe vai acessar o banco de dados!
 * */
@@ -26,6 +29,14 @@ public class ClienteInfraRepository implements ClienteRepository {
         Cliente salvaCliente = jpaRepository.save(cliente);
         log.info("[finaliza] ClienteInfraRepository - salva");
         return salvaCliente;
+    }
+
+    @Override
+    public Cliente buscaPorId(UUID idCliente) {
+        log.info("[inicia] ClienteInfraRepository - buscaPorId");
+        Cliente cliente = jpaRepository.findById(idCliente).orElseThrow();
+        log.info("[finaliza] ClienteInfraRepository - buscaPorId");
+        return cliente;
     }
 
 
