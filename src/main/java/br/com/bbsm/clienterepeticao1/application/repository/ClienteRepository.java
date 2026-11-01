@@ -2,7 +2,11 @@ package br.com.bbsm.clienterepeticao1.application.repository;
 
 import br.com.bbsm.clienterepeticao1.domain.Cliente;
 
+import java.util.UUID;
+
 public interface ClienteRepository {
 
     Cliente salva(Cliente cliente);
+
+    Cliente buscaPorId(UUID idCliente);
 }
