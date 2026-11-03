@@ -1,4 +1,21 @@
 package br.com.bbsm.clienterepeticao1.application.api;
 
+import br.com.bbsm.clienterepeticao1.domain.Cliente;
+import lombok.Getter;
+
+import java.util.UUID;
+
+@Getter
 public class ClienteListResponse {
+
+    private UUID idCliente;
+    private String nomeCompleto;
+    private  String emaiil;
+
+    public ClienteListResponse(Cliente cliente) {
+        this.idCliente = cliente.getIdCliente();
+        this.nomeCompleto = cliente.getNomeCompleto();
+        this.emaiil = cliente.getEmail();
+
+    }
 }
