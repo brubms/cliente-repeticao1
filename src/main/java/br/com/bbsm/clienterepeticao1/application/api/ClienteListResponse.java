@@ -12,12 +12,12 @@ public class ClienteListResponse {
 
     private UUID idCliente;
     private String nomeCompleto;
-    private  String emaiil;
+    private  String email;
 
     public ClienteListResponse(Cliente cliente) {
         this.idCliente = cliente.getIdCliente();
         this.nomeCompleto = cliente.getNomeCompleto();
-        this.emaiil = cliente.getEmail();
+        this.email = cliente.getEmail();
 
     }
 
