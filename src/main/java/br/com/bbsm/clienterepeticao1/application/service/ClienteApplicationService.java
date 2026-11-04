@@ -1,6 +1,7 @@
 package br.com.bbsm.clienterepeticao1.application.service;
 
 import br.com.bbsm.clienterepeticao1.application.api.ClienteDetalhadoResponse;
+import br.com.bbsm.clienterepeticao1.application.api.ClienteListResponse;
 import br.com.bbsm.clienterepeticao1.application.repository.ClienteRepository;
 import br.com.bbsm.clienterepeticao1.application.api.ClienteRequest;
 import br.com.bbsm.clienterepeticao1.application.api.ClienteResponse;
@@ -10,6 +11,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.UUID;
 
 /*
@@ -57,5 +59,13 @@ public class ClienteApplicationService implements ClienteService{
         Cliente cliente = clienteRepository.buscaPorId(idCliente);
         log.info("[finaliza] ClienteApplicationService - buscaClientePorId");
         return new ClienteDetalhadoResponse(cliente);
+    }
+
+    @Override
+    public List<ClienteListResponse> listaTodosClientes() {
+        log.info("[inicia] ClienteApplicationService - listaTodosClientes");
+        List<Cliente> clientes  = clienteRepository.buscaTodosClientes();
+        log.info("[finaliza] ClienteApplicationService - listaTodosClientes");
+        return ClienteListResponse.converte(clientes);
     }
 }
