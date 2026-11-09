@@ -51,7 +51,7 @@ public class ClienteRestController implements ClienteAPI{
     @Override
     public void deletaClientePorId(UUID idCliente) {
         log.info("[inicia] ClienteRestController - deletaClientePorId");
-        
+        clienteService.deletaClientePorId(idCliente);
         log.info("[finaliza] ClienteRestController - deletaClientePorId");
 
     }
