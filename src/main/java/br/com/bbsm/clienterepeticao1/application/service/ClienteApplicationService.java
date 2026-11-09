@@ -68,4 +68,9 @@ public class ClienteApplicationService implements ClienteService{
         log.info("[finaliza] ClienteApplicationService - listaTodosClientes");
         return ClienteListResponse.converte(clientes);
     }
+
+    @Override
+    public void deletaClientePorId(UUID idCliente) {
+        
+    }
 }
