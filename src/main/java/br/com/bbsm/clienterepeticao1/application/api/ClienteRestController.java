@@ -1,7 +1,6 @@
 package br.com.bbsm.clienterepeticao1.application.api;
 
 import br.com.bbsm.clienterepeticao1.application.service.ClienteService;
-import br.com.bbsm.clienterepeticao1.domain.Cliente;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
@@ -57,9 +56,16 @@ public class ClienteRestController implements ClienteAPI{
     }
 
 
+    @Override
+    public void patchAlteraDadosCliente(UUID idCliente, ClienteAlteradoRequest clienteAlteradoRequest) {
 
-
+        log.info("[inicia] ClienteRestController - alteraCliente");
+        clienteService.alteraDadosCliente(idCliente, clienteAlteradoRequest);
+        log.info("[finaliza] ClienteRestController - alteraCliente");
     }
+
+
+}
 
 
 
