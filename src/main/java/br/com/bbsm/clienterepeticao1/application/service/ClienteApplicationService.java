@@ -1,10 +1,7 @@
 package br.com.bbsm.clienterepeticao1.application.service;
 
-import br.com.bbsm.clienterepeticao1.application.api.ClienteDetalhadoResponse;
-import br.com.bbsm.clienterepeticao1.application.api.ClienteListResponse;
+import br.com.bbsm.clienterepeticao1.application.api.*;
 import br.com.bbsm.clienterepeticao1.application.repository.ClienteRepository;
-import br.com.bbsm.clienterepeticao1.application.api.ClienteRequest;
-import br.com.bbsm.clienterepeticao1.application.api.ClienteResponse;
 import br.com.bbsm.clienterepeticao1.domain.Cliente;
 
 import lombok.RequiredArgsConstructor;
@@ -77,4 +74,16 @@ public class ClienteApplicationService implements ClienteService{
         log.info("[finaliza] ClienteApplicationService - deletaClientePorId");
 
     }
+
+    @Override
+    public void alteraDadosCliente(UUID idCliente, ClienteAlteradoRequest clienteAlteradoRequest) {
+        log.info("[inicia] ClienteApplicationService - alteraDadosCliente");
+        Cliente cliente = clienteRepository.buscaPorId(idCliente);
+        cliente.alteraDados(clienteAlteradoRequest);
+        clienteRepository.salva(cliente);
+        log.info("[finaliza] ClienteApplicationService - alteraDadosCliente");
+
+    }
+
+
 }
