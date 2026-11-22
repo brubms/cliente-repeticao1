@@ -1,5 +1,6 @@
 package br.com.bbsm.clienterepeticao1.domain;
 
+import br.com.bbsm.clienterepeticao1.application.api.ClienteAlteradoRequest;
 import br.com.bbsm.clienterepeticao1.application.api.ClienteRequest;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
@@ -68,6 +69,13 @@ public class Cliente {
         this.dataNascimento = clienteRequest.getDataNascimento();
         this.dataHoraCadastro = LocalDateTime.now();
 
+    }
+
+    public void alteraDados(ClienteAlteradoRequest  clienteAlteradoRequest) {
+        this.celular = clienteAlteradoRequest.getCelular();
+        this.email = clienteAlteradoRequest.getEmail();
+        this.telefone = clienteAlteradoRequest.getTelefone();
+        this.dataHoraAtualizacao = LocalDateTime.now();
     }
 
 }
