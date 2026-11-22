@@ -1,10 +1,6 @@
 package br.com.bbsm.clienterepeticao1.application.service;
 
-import br.com.bbsm.clienterepeticao1.application.api.ClienteDetalhadoResponse;
-import br.com.bbsm.clienterepeticao1.application.api.ClienteListResponse;
-import br.com.bbsm.clienterepeticao1.application.api.ClienteRequest;
-import br.com.bbsm.clienterepeticao1.application.api.ClienteResponse;
-import br.com.bbsm.clienterepeticao1.domain.Cliente;
+import br.com.bbsm.clienterepeticao1.application.api.*;
 
 import java.util.List;
 import java.util.UUID;
@@ -25,4 +21,6 @@ public interface ClienteService {
     List<ClienteListResponse> listaTodosClientes();
 
     void deletaClientePorId(UUID idCliente);
+
+    void alteraDadosCliente(UUID idCliente, ClienteAlteradoRequest clienteAlteradoRequest);
 }
